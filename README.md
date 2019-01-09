@@ -117,4 +117,4 @@ Pull requests are welcome and encouraged! Any contributions should include new o
 License
 -------
 
-intuit-oauth is provided under Apache 2.0 found `<https://github.intuit.com/hlu2/oauth-rubyclient/blob/master/LICENSE>`__
+intuit-oauth is provided under Apache 2.0
