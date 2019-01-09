@@ -20,19 +20,15 @@ The Ruby OAuth client would require Ruby version >= 1.9.0, and RubyGem version >
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'intuit-oauth'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+The Ruby OAuth library use gem for installation. To install the library, run:
 
     $ gem install 'intuit-oauth'
+    
+You can also download the source code and run:
+
+    $ gem build intuit-oauth.gemspec
+
+to build your own gem if you want to modify a certain functions in the library
     
 ## Usage Examples
 
