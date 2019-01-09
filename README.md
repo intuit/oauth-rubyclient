@@ -3,15 +3,20 @@
 Intuit OAuth Ruby Client
 ==========================
 
-This client library is meant to work with Intuit's OAuth and OpenID implementation. The `AuthClient` object response can be used for User Info API, Accounting API and Payments API. This library supports:
+This tutorial describes how to use Intuit Ruby OAuth Client Library to generate access tokens for your QuickBooks Online Companies data. The Ruby OAuth Client Library  provides a set of methods that make it easier to work with Intuit’s OAuth and OpenID protocol:
 
-- Generating Authorization URL
-- Getting OAuth2 Bearer Token 
-- Getting User Info 
-- Validating OpenID token
-- Refreshing OAuth2 Token
-- Revoking OAuth2 Token
-- Migrating tokens from OAuth1.0 to OAuth2
+ -Generating Authorization URL
+ -Getting OAuth2 Bearer Token
+ -Getting User Info
+ -Validating OpenID token
+ -Refreshing OAuth2 Token
+ -Revoking OAuth2 Token
+ -Migrating tokens from OAuth1.0 to OAuth2
+ 
+ If you are not familiar with Intuit OAuth protocol, please refer to Authentication and authorization page for general information on OAuth.
+ 
+The Ruby OAuth client would require Ruby version >= 1.9.0, and RubyGem version >= 1.3.5
+
 
 ## Installation
 
