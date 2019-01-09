@@ -110,11 +110,11 @@ oauth2Token = oauth_client.token.get_bearer_token('the authorization code return
 Issues and Contributions
 ------------------------
 
-Please open an `issue <https://github.com/intuit/oauth-rubyclient/issues>` on GitHub if you have a problem, suggestion, or other comment.
+Please open an [issue](https://github.com/intuit/oauth-rubyclient/issues) on GitHub if you have a problem, suggestion, or other comment.
 
 Pull requests are welcome and encouraged! Any contributions should include new or updated unit tests as necessary to maintain thorough test coverage.
 
 License
 -------
 
-intuit-oauth is provided under Apache 2.0
+Intuit-oauth Ruby gem is provided under Apache 2.0 License
