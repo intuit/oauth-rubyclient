@@ -38,7 +38,6 @@ In order to start using the library, the first step is to create a client object
   require 'intuit-oauth'
   
   client = IntuitOAuth::Client.new('client_id', 'client_secret', 'redirectUrl', 'environment')
-  
   ```
 
 ### General Authorization Code URL
@@ -52,9 +51,15 @@ After the client is created, use the client object to generate authorization URL
   
   authorizationCodeUrl = oauth_client.code.get_auth_uri(scopes)
   # => https://appcenter.intuit.com/connect/oauth2?   client_id=clientId&redirect_uri=redirectUrl&response_type=code&scope=com.intuit.quickbooks.accounting&state=rMwcoDITc2N6FJsUGGO9
-  
-  
   ```
+Redirect your users to the authorizationCodeUrl, and an authorization code will be sent to the Redirect URL defined. The authorization code will be used to exchange for an oAuth 2.0 access token later. 
+
+### Exchange Authorization Code for OAuth 2.0 Token
+
+Once the user has authorized your app, an authorization code will be sent to your RedirectURL defined in your client. Exchange the authorization code for an OAuth 2.0 token object.
+
+    result = oauth_client.token.get_bearer_token('The_authorization_code')
+    
 
 ## Usage Examples
 
@@ -92,11 +97,7 @@ Define the scopes for the app
     
 
     
-### Exchange Authorization Code for OAuth 2.0 Token
 
-Once the user has authorized your app, an authorization code will be sent to your Redirect_URL defined in your client. Exchange the authorization code for an OAuth 2.0 token object.
-
-    result = oauth_client.token.get_bearer_token('The_authorization_code')
     
     
 ### Refresh Token
