@@ -1,7 +1,6 @@
 # oauth-rubyclient
 
-[![Gem Version](http://img.shields.io/gem/v/oauth2.svg)][gem]
-
+[![Gem Version](https://badge.fury.io/rb/intuit-oauth.svg)](https://badge.fury.io/rb/intuit-oauth)
 
 Intuit OAuth Ruby Client
 ==========================
