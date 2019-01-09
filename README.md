@@ -13,7 +13,7 @@ This tutorial describes how to use Intuit Ruby OAuth Client Library to generate 
   - Revoking OAuth2 Token
   - Migrating tokens from OAuth1.0 to OAuth2
  
- If you are not familiar with Intuit OAuth protocol, please refer to Authentication and authorization page for general information on OAuth.
+ If you are not familiar with Intuit OAuth protocol, please refer to [Authentication and authorization page](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0) for general information on OAuth.
  
 The Ruby OAuth client would require Ruby version >= 1.9.0, and RubyGem version >= 1.3.5
 
