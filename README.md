@@ -18,7 +18,7 @@ This tutorial describes how to use Intuit Ruby OAuth Client Library to generate 
 The Ruby OAuth client would require Ruby version >= 1.9.0, and RubyGem version >= 1.3.5
 
 
-## Installation
+### Installation
 
 The Ruby OAuth library use gem for installation. To install the library, run:
 
@@ -30,7 +30,7 @@ You can also download the source code and run:
 
 to build your own gem if you want to modify a certain functions in the library
     
-## Create client instance
+### Create client instance
 
 In order to start using the library, the first step is to create a client object. Instantiate the IntuitOAuth object with app’s ClientID, ClientSecret, Redirect URL and the right environment. Valid values for environment include sandbox and production. redirect_uri should be set in your Intuit Developer app’s Keys tab under the right environment. 
 
@@ -60,8 +60,34 @@ Once the user has authorized your app, an authorization code will be sent to you
 
     result = oauth_client.token.get_bearer_token('The_authorization_code')
     
+### Refresh Token
 
-## Usage Examples
+Your app must keep track of when a stored access token can be used and when the token must be refreshed. Use the refresh method to refresh the token when the token expired. ALWAYS STORE THE LATEST REFRESH TOKEN RETURNED. Below is an exanmple how to use the refresh method to refresh token:
+
+    newToken = oauth_client.token.refresh_tokens('Your_refresh_token')
+    
+### Revoke Token
+
+If your app is disconnected by the user, you would need to revoke the token. Use revoke_tokens method to revoke the token:
+
+    trueOrFalse = oauth_client.token.revoke_tokens('the_token_you_want_to_revoke')
+
+
+### Get User Info
+
+If OpenID scope is set when you generate the authorization URL, you can use get_user_info to get the user information:
+
+    result=oauth_client.openid.get_user_info('accessToken')
+    
+
+
+### Call migration method
+
+If you have migrated your OAuth 1.0 app to OAuth 2.0 app, and want to exchange your OAuth 1.0 token to OAuth 2.0 token, use migrate_tokens method
+
+    result=oauth_client.Migrate.migrate_tokens(consumer_key, consumer_secret, access_token, access_secret, scopes)
+
+### A Complete Usage Example for Creating OAuth 2.0 token
 
 The below example tells how to construct the IntuitOAuth Client and use it to generate an OAuth 2 token.
 
@@ -80,43 +106,6 @@ oauth2Token = oauth_client.token.get_bearer_token('the authorization code return
 # => #<IntuitOAuth::ClientResponse:0x00007f9152b5c418 @access_token="the access token", @expires_in=3600, @refresh_token="the refresh token", @x_refresh_token_expires_in=8726400>
 
 ```
-
-### Initialize OAuth client object
-
-Create an OAuth 2 client to send requests
-
-    oauth_client = IntuitOAuth::Client.new('YourClientID', 'YourClientSecret', 'http://localhost:3000/token/new', 'sandbox')
-
-### Add scopes
-
-Define the scopes for the app
-
-    scopes = [
-        IntuitOAuth::Scopes::ACCOUNTING
-    ]
-    
-
-    
-
-    
-    
-### Refresh Token
-
-Refresh the OAuth 2.0 token using refresh token. Remember to store the OAuth 2.0 refresh token to your own database.
-
-    newToken = oauth_client.token.refresh_tokens('Your_refresh_token')
-    
-### Get User Info
-
-Get the user info based on the scopes for OpenID
-
-    result=oauth_client.openid.get_user_info('accessToken')
-
-### Call migration method
-
-If you have migrated your OAuth 1.0 app to OAuth 2.0 app, and want to exchange your OAuth 1.0 token to OAuth 2.0 token, use migrate_tokens method
-
-    result=oauth_client.Migrate.migrate_tokens(consumer_key, consumer_secret, access_token, access_secret, scopes)
     
 Issues and Contributions
 ------------------------
