@@ -5,13 +5,13 @@ Intuit OAuth Ruby Client
 
 This tutorial describes how to use Intuit Ruby OAuth Client Library to generate access tokens for your QuickBooks Online Companies data. The Ruby OAuth Client Library  provides a set of methods that make it easier to work with Intuit’s OAuth and OpenID protocol:
 
- -Generating Authorization URL
- -Getting OAuth2 Bearer Token
- -Getting User Info
- -Validating OpenID token
- -Refreshing OAuth2 Token
- -Revoking OAuth2 Token
- -Migrating tokens from OAuth1.0 to OAuth2
+  - Generating Authorization URL
+  - Getting OAuth2 Bearer Token
+  - Getting User Info
+  - Validating OpenID token
+  - Refreshing OAuth2 Token
+  - Revoking OAuth2 Token
+  - Migrating tokens from OAuth1.0 to OAuth2
  
  If you are not familiar with Intuit OAuth protocol, please refer to Authentication and authorization page for general information on OAuth.
  
