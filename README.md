@@ -30,6 +30,32 @@ You can also download the source code and run:
 
 to build your own gem if you want to modify a certain functions in the library
     
+## Create client instance
+
+In order to start using the library, the first step is to create a client object. Instantiate the IntuitOAuth object with app’s ClientID, ClientSecret, Redirect URL and the right environment. Valid values for environment include sandbox and production. redirect_uri should be set in your Intuit Developer app’s Keys tab under the right environment. 
+
+  ```ruby
+  require 'intuit-oauth'
+  
+  client = IntuitOAuth::Client.new('client_id', 'client_secret', 'redirectUrl', 'environment')
+  
+  ```
+
+### General Authorization Code URL
+
+After the client is created, use the client object to generate authorization URL by specifying scopes. It is shown below in code:
+
+ ```ruby
+  scopes = [
+    IntuitOAuth::Scopes::ACCOUNTING
+  ]
+  
+  authorizationCodeUrl = oauth_client.code.get_auth_uri(scopes)
+  # => https://appcenter.intuit.com/connect/oauth2?   client_id=clientId&redirect_uri=redirectUrl&response_type=code&scope=com.intuit.quickbooks.accounting&state=rMwcoDITc2N6FJsUGGO9
+  
+  
+  ```
+
 ## Usage Examples
 
 The below example tells how to construct the IntuitOAuth Client and use it to generate an OAuth 2 token.
@@ -64,11 +90,7 @@ Define the scopes for the app
         IntuitOAuth::Scopes::ACCOUNTING
     ]
     
-### General Authorization Code URL
 
-The URL for users to click on the "Authorizate" button. An authorization code will sent to the redirect URL defined in your app
-
-    url = oauth_client.code.get_auth_uri(scopes)
     
 ### Exchange Authorization Code for OAuth 2.0 Token
 
