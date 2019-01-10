@@ -1,3 +1,5 @@
+[![SDK Banner](views/SDK.png)][ss1]
+
 # oauth-rubyclient
 
 [![Gem Version](https://badge.fury.io/rb/intuit-oauth.svg)](https://badge.fury.io/rb/intuit-oauth)
