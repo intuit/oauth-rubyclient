@@ -1,4 +1,4 @@
-[![SDK Banner](views/SDK.png)][ss1]
+[![SDK Banner](views/SDK.png)](https://help.developer.intuit.com/s/SDKFeedback?cid=1130)
 
 # oauth-rubyclient
 
