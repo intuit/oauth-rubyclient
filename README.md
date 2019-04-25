@@ -41,7 +41,7 @@ In order to start using the library, the first step is to create a client object
   ```ruby
   require 'intuit-oauth'
   
-  client = IntuitOAuth::Client.new('client_id', 'client_secret', 'redirectUrl', 'environment')
+  oauth_client = IntuitOAuth::Client.new('client_id', 'client_secret', 'redirectUrl', 'environment')
   ```
 
 ### General Authorization Code URL
