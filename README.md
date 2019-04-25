@@ -98,7 +98,7 @@ The below example tells how to construct the IntuitOAuth Client and use it to ge
 ```ruby
 require 'intuit-oauth'
 
-client = IntuitOAuth::Client.new('client_id', 'client_secret', 'redirectUrl', 'environment')
+oauth_client = IntuitOAuth::Client.new('client_id', 'client_secret', 'redirectUrl', 'environment')
 scopes = [
     IntuitOAuth::Scopes::ACCOUNTING
 ]
