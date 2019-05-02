@@ -13,7 +13,6 @@
 # limitations under the License.
 
 require 'rsa_pem'
-require 'json_web_token'
 
 require_relative '../base'
 
