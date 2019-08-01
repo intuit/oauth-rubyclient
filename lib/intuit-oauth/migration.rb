@@ -57,7 +57,7 @@ module IntuitOAuth
           client_secret: @client.secret
         }
 
-        IntuitOAuth::Transport.request('POST', migration_endpoint, headers, body)
+        IntuitOAuth::Transport.request('POST', migration_endpoint, headers, body.to_json)
       end
 
     end
