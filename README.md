@@ -89,7 +89,7 @@ If OpenID scope is set when you generate the authorization URL, you can use get_
 
 If you have migrated your OAuth 1.0 app to OAuth 2.0 app, and want to exchange your OAuth 1.0 token to OAuth 2.0 token, use migrate_tokens method
 
-    result=oauth_client.Migrate.migrate_tokens(consumer_key, consumer_secret, access_token, access_secret, scopes)
+    result=oauth_client.migration.migrate_tokens(consumer_key, consumer_secret, access_token, access_secret, scopes)
 
 ### A Complete Usage Example for Creating OAuth 2.0 token
 
