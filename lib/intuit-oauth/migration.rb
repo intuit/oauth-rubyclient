@@ -47,6 +47,7 @@ module IntuitOAuth
         oauth1_header = IntuitOAuth::Utils.get_oauth1_header('POST', migration_endpoint, oauth1_tokens)
         headers = {
           'Content-Type': 'application/json',
+          Accept: 'application/json',
           Authorization: oauth1_header
         }
 
