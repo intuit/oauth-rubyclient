@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 1.9.0'
   spec.required_rubygems_version = '>= 1.3.5'
   spec.summary       = 'A Ruby wrapper for the OAuth 2.0 protocol.'
-  spec.version       = '1.0.1'
+  spec.version       = '1.0.2'
 
   spec.require_paths = %w[lib]
   spec.bindir        = 'exe'
