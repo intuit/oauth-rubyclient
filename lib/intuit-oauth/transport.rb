@@ -31,12 +31,12 @@ module IntuitOAuth
       req_headers = headers.nil? ? user_agent_header : user_agent_header.merge!(headers)
 
       if method == 'GET'
-        response = HTTParty.get(url,
+        response = get(url,
           headers: req_headers
         )
 
       elsif method == 'POST'
-        response = HTTParty.post(url,
+        response = post(url,
           headers: req_headers,
           body: body
         )
