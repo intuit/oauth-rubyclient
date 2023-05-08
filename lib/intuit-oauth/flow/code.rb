@@ -37,6 +37,7 @@ module IntuitOAuth
           redirect_uri: @client.redirect_uri,
           response_type: 'code',
           state: state_token,
+          claims: '{"id_token":{"realmId":null}}',
         }
 
         "#{@client.auth_endpoint}?#{url_params.to_param}"
