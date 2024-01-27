@@ -79,16 +79,16 @@ module IntuitOAuth
         # 4. check if the signature is correct
         response = IntuitOAuth::Transport.request('GET', @client.jwks_uri, nil, nil, false)
         body = response.body
-
-        keys = JSON.parse(body).fetch('keys').first
+        # loop through all the available keys in jwks_uri & find match with kid from id_token_header_json
+        keys_array = JSON.parse(body)['keys']
+        keys_array.each do |keys|
         standard_kid = keys.fetch('kid')
         kid_in_id_token = id_token_header_json.fetch('kid')
 
-        unless standard_kid.eql? kid_in_id_token
-          return false
+        return true if standard_kid.eql? kid_in_id_token
         end
 
-        return true
+        return false
 
         end
     end
