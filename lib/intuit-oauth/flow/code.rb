@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+require 'json'
 require_relative '../base'
 require_relative '../utils'
 require 'active_support/all'
-
 
 module IntuitOAuth
   module Flow
@@ -25,8 +25,9 @@ module IntuitOAuth
       #
       # @param [Scope] the Scope for the token to be generated
       # @param [state_token] an option state token to be passed
+      # @param [claims] an optional claims
       # @return [URL] the authorization code URL
-      def get_auth_uri(scopes, state_token=nil)
+      def get_auth_uri(scopes, state_token=nil, claims=nil)
         if state_token.nil?
           state_token = IntuitOAuth::Utils.generate_random_string()
         end
@@ -38,6 +39,14 @@ module IntuitOAuth
           response_type: 'code',
           state: state_token,
         }
+
+        if claims.present?
+          url_params[:claims] = if claims.is_a? Hash
+                                  claims.to_json
+                                else 
+                                  claims
+                                end
+        end
 
         "#{@client.auth_endpoint}?#{url_params.to_param}"
       end

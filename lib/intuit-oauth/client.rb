@@ -26,14 +26,16 @@ module IntuitOAuth
     :auth_endpoint, :token_endpoint, :revoke_endpoint, :issuer_uri, :jwks_uri, :user_info_url, :state_token, :realm_id
     attr_writer :realm_id, :state_token
 
-    def initialize(client_id, client_secret, redirect_uri, environment)
+    def initialize(client_id, client_secret, redirect_uri, environment, discovery_url=nil, claims=nil)
       @id = client_id
       @secret = client_secret
       @redirect_uri = redirect_uri
       @environment = environment
+      @discovery_url = discovery_url
+      @claims = claims
 
       # Discovery Doc containes endpoints required for OAuth fow
-      @discovery_doc = get_discovery_doc(@environment)
+      @discovery_doc = fetch_discovery_doc
       @auth_endpoint = @discovery_doc['authorization_endpoint']
       @token_endpoint = @discovery_doc['token_endpoint']
       @revoke_endpoint = @discovery_doc['revocation_endpoint']
@@ -46,17 +48,12 @@ module IntuitOAuth
       @state_token = ''
     end
 
-    def get_discovery_doc(environment)
-      if ['production', 'prod'].include? environment.downcase
-        url = IntuitOAuth::Config::DISCOVERY_URL_PROD
-      else
-        url = IntuitOAuth::Config::DISCOVERY_URL_SANDBOX
-      end
-      IntuitOAuth::Transport.request('GET', url)
+    def fetch_discovery_doc
+      IntuitOAuth::Transport.request('GET', discovery_url)
     end
 
     def code
-      IntuitOAuth::Flow::AuthCode.new(self)
+      IntuitOAuth::Flow::AuthCode.new(self, nil, @claims)
     end
 
     def token
@@ -70,5 +67,16 @@ module IntuitOAuth
     def migration
       IntuitOAuth::Migration::Migrate.new(self)
     end
+
+    private
+
+    def discovery_url
+      @discovery_url || = if ['production', 'prod'].include? @environment.downcase
+        IntuitOAuth::Config::DISCOVERY_URL_PROD
+      else
+        IntuitOAuth::Config::DISCOVERY_URL_SANDBOX
+      end
+    end
+
   end
 end
