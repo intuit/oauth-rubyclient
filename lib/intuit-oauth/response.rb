@@ -15,13 +15,14 @@
 module IntuitOAuth
   class ClientResponse
     attr_reader :access_token, :expires_in, :refresh_token, :x_refresh_token_expires_in,
-    :id_token, :headers, :body, :code, :realm_id
+    :x_refresh_token_hard_expires_in, :id_token, :headers, :body, :code, :realm_id
 
     def initialize(response)
       @access_token = response['access_token']
       @expires_in = response['expires_in']
       @refresh_token = response['refresh_token']
       @x_refresh_token_expires_in = response['x_refresh_token_expires_in']
+      @x_refresh_token_hard_expires_in = response['x_refresh_token_hard_expires_in']
       if response['id_token']
         @id_token = response['id_token']
       end

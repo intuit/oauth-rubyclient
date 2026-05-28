@@ -27,8 +27,9 @@ module IntuitOAuth
       #
       # @param [auth_code] the Code send to your redirect_uri
       # @param [realm_id] the company ID for the Company
+      # @param [include_refresh_token_hard_expires_in] if true, includes x_refresh_token_hard_expires_in in response
       # @return [AccessToken] the AccessToken
-      def get_bearer_token(auth_code, realm_id=nil)
+      def get_bearer_token(auth_code, realm_id=nil, include_refresh_token_hard_expires_in: false)
         if realm_id != nil
           @client.realm_id = realm_id
         end
@@ -38,6 +39,9 @@ module IntuitOAuth
           "Content-Type": 'application/x-www-form-urlencoded',
           Authorization: IntuitOAuth::Utils.get_auth_header(@client.id, @client.secret)
         }
+        if include_refresh_token_hard_expires_in
+          headers[:'x-include-refresh-token-hard-expires-in'] = 'true'
+        end
 
         body = {
           grant_type: 'authorization_code',
@@ -51,12 +55,16 @@ module IntuitOAuth
       # Using the token passed to generate a new refresh token and access token
       #
       # @param [token] the refresh token used to refresh token
+      # @param [include_refresh_token_hard_expires_in] if true, includes x_refresh_token_hard_expires_in in response
       # @return [AccessToken] the AccessToken
-      def refresh_tokens(token)
+      def refresh_tokens(token, include_refresh_token_hard_expires_in: false)
         headers = {
           "Content-Type": 'application/x-www-form-urlencoded',
           Authorization: IntuitOAuth::Utils.get_auth_header(@client.id, @client.secret)
         }
+        if include_refresh_token_hard_expires_in
+          headers[:'x-include-refresh-token-hard-expires-in'] = 'true'
+        end
 
         body = {
           grant_type: 'refresh_token',
